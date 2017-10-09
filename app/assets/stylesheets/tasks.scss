@@ -1,0 +1,49 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+th{
+  font-size:16px;
+  font-family: fira sans;
+  font-weight:bold;
+}
+td{
+  font-size:16px;
+  font-family: fira sans;
+}
+
+a{
+  color:white;
+  background-color: white;
+}
+
+h1{
+  font-family: fira sans;
+}
+
+.taskh2{
+  font-family: fira sans;
+  font-size:23px;
+}
+
+.btn-reactivate{
+  background-color:white;
+  color:black;
+}
+
+.btn-finish{
+  background-color:#76d275;
+  color:white;
+}
+
+.notice-alert{
+  font-family:fira sans;
+  color:white;
+  font-size:22px;
+}
+
+.task-form label{
+  font-family:fira sans;
+  font-size:16px;
+  margin-top:15px;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Utasker</title>
+    <%= csrf_meta_tags %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/da17f0ed86.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.4.2/b-html5-1.4.2/r-2.2.0/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/b-1.4.2/b-html5-1.4.2/r-2.2.0/datatables.min.js"></script>
+
+
+  </head>
+
+  <body>
+    <div class="navbar-more-overlay"></div>
+<nav class="navbar navbar-inverse navbar-fixed-top animate">
+<div class="container navbar-more visible-xs">
+</div>
+<div class="container">
+  <div class="navbar-header hidden-xs">
+    <a class="navbar-brand" href="<%= root_path %>" style="font-size:25px"><i class="fa fa-university" aria-hidden="true"></i>               uTasker</a>
+  </div>
+
+  <ul class="nav navbar-nav navbar-right mobile-bar">
+    <li>
+      <a href="<%= root_path %>">
+        <span class="menu-icon fa fa-home"></span>
+        Home
+      </a>
+    </li>
+      <% if user_signed_in? %>
+      <li>
+        <a href="<%= new_task_path %>">
+          <span class="menu-icon fa fa-sticky-note"></span>
+          <span class="hidden-xs">New Task</span>
+          <span class="visible-xs">New Task</span>
+        </a>
+      </li>
+      <li>
+        <a href="<%= tasks_path %>">
+          <span class="menu-icon fa fa-table"></span>
+          <span class="hidden-xs">View Tasks</span>
+          <span class="visible-xs">View Tasks</span>
+        </a>
+      </li>
+      <li>
+        <a href="<%= destroy_user_session_path %>", data-method="delete">
+          <span class="menu-icon fa fa-sign-out"></span>
+          <span class="hidden-xs">Sign Out</span>
+          <span class="visible-xs">Sign Out</span>
+        </a>
+      </li>
+      <% else %>
+      <li>
+        <a href="<%= new_user_session_path %>">
+          <span class="menu-icon fa fa-sign-in"></span>
+          <span class="hidden-xs">Sign In</span>
+          <span class="visible-xs">Sign In</span>
+        </a>
+      </li>
+      <li>
+        <a href="<%= new_user_registration_path  %>">
+          <span class="menu-icon fa fa-user-plus"></span>
+          <span class="hidden-xs">Sign Up</span>
+          <span class="visible-xs">Sign Up</span>
+        </a>
+      </li>
+      <% end %>
+
+  </ul>
+</div>
+</nav>
+    <%= yield %>
+    <div class="footer">
+      <div class="container-footer">
+        <div class="row">
+            <p>Copyright &copy 2017 JC Software</p>
+            <a href='https://github.com/Jordan2551'><i class="fa fa-github fa-3x fa-fw"></i></a>
+            <a href='https://www.linkedin.com/in/jordan-cohen-b54294111/'><i class="fa fa-linkedin fa-3x fa-fw"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

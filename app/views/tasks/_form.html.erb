@@ -1,0 +1,106 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="container well task-form" style="padding-top:35px;padding-bottom:35px;">
+  <div class="row form-row-margin">
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= form.label :course_id, 'Select Task Type (Choose One)' %>
+        <br>
+        <div class="buying-selling-group" id="buying-selling-group" data-toggle="buttons">
+            <label class="btn btn-default buying-selling <%= if task.task_type == 1 then 'active' end %>">
+              <%= form.radio_button :task_type, '1', name: "task_type", id: :task_type, checked: task.task_type == 1 %>
+                <span class="radio-dot"></span>
+                <span class="buying-selling-word">Assignment</span>
+            </label>
+            <label class="btn btn-default buying-selling <%= if task.task_type == 2 then 'active' end %>">
+              <%= form.radio_button :task_type, '2', name: "task_type", id: :task_type, checked: task.task_type == 2 %>
+                <span class="radio-dot"></span>
+                <span class="buying-selling-word">Exam</span>
+            </label>
+            <label class="btn btn-default buying-selling <%= if task.task_type == 3 then 'active' end %>">
+              <%= form.radio_button :task_type, '3', name: "task_type", id: :task_type, checked: task.task_type == 3 %>
+                <span class="radio-dot"></span>
+                <span class="buying-selling-word">Quiz</span>
+            </label>
+          </div>
+    </div>
+  </div>
+
+  <!-- !!!!!!!!!!!!!!!!!! -->
+  <div class="row form-row-margin">
+    <div class="col-sm-6 col-sm-offset-3">
+      <%= form.label :course_id, 'Select Your Course' %>
+      <select name="task[course_id]" class="form-control" selected="<%= task.course_id %>">
+        <% Course.order(:name).each do |course| %>
+          <option value="<%= course.id %>"><%= course.code %></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+  <!-- !!!!!!!!!!!!!!!!!! -->
+    <div class="row form-row-margin">
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= form.label :course_id, 'Describe Your Task' %>
+        <%= form.text_field :description, id: :task_description, placeholder:"Task Description", class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 form-row-margin">
+        <div class="form-group">
+          <%= form.label :course_id, "Select your Task's Due Date" %>
+              <div class='input-group date' id='datetimepicker1'>
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                  <%= form.text_field :due_date, name: :due_date, class:"form-control"%>
+              </div>
+          </div>
+      </div>
+  </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+              format: 'YYYY-MM-DD HH:MM'
+            });
+        });
+    </script>
+
+    <div class="row form-row-margin">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="form-check">
+            <label class="form-check-label">
+              Priority Task
+              <%= form.check_box :is_priority, id: :is_priority, class:"form-check-input" %>
+            </label>
+          </div>
+        </div>
+    </div>
+    <div class="row form-row-margin">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="form-check">
+          <label class="form-check-label">
+            Completed Task
+            <%= form.check_box :is_completed, id: :task_is_completed, class:"form-check-input" %>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 form-row-margin">
+        <%= form.submit class:"btn btn-success btn-lg", style:"margin-top:15px" %>
+      </div>
+    </div>
+</div>
+
+<% end %>

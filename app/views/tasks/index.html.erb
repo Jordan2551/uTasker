@@ -1,0 +1,47 @@
+
+<div class="container">
+  <div class="well well-lg">
+    <h1><%= "#{current_user.email}'s Tasks"%></h1>
+    <h2 class="taskh2">Here you can view your upcoming and completed assignments, exams and quizzes.</h2>
+    <%= link_to '         Create New Task', new_task_path, class:"btn btn-lg btn-primary fa fa-2x fa-calendar", style:"margin-bottom:30px; margin-top:30px; color:white" %>
+
+  </div>
+  <% if notice %>
+    <div class="alert alert-info">
+      <p id="notice" class="notice-alert"><%= notice %></p>
+    </div>
+  <% end %>
+
+  <table id="example" class="table table-responsive table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Task Title</th>
+        <th>Course Code</th>
+        <th>Description</th>
+        <th>Task Type</th>
+        <th>Priority Task</th>
+        <th>Due Date</th>
+        <th>Time Left</th>
+        <th>Action</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr class="<%= task_row_colorizer(task.is_completed, task.is_priority, task.due_date)%>">
+        <td><%= task.title %></td>
+        <td><%= Course.find(task.course_id).code %></td>
+        <td><%= task.description %></td>
+        <td><%= if task.task_type == 0 then "Not Specified" elsif task.task_type == 1 then "Assignment" elsif task.task_type == 2 then "Exam"  elsif task.task_type == 3 then "Quiz" end %> </td>
+        <td><%= if task.is_priority then "Yes" else "No" end %></td>
+        <td><i class="fa fa fa-calendar" aria-hidden="true"></i>    <%= task.due_date.to_time.strftime('%B %e at %l:%M %p') %></td>
+        <td><i class="fa fa fa-clock-o" aria-hidden="true"></i>    <%= time_left_builder(task.due_date, task.is_completed) %></td>
+        <td><%= if task.is_completed then link_to "Reactivate", updatecomplete_path(id: task.id), method: :post, data: { confirm: "Are you sure you would like to reactivatie this task?"}, class:"btn btn-reactivate", style:"font-size:15px; background-color:white" else link_to "Finish Task", updatecomplete_path(id: task.id), method: :post, class:"btn btn-finish", style:"font-size:15px; background-color:#76d275"  end %></td>
+        <td><%= link_to '', edit_task_path(task), class:"fa fa-2x fa-pencil-square-o", alt:"Edit task" %></td>
+        <td><%= link_to '', task, method: :delete, data: { confirm: 'Are you sure you would like to delete this task?' }, class:"fa fa-2x fa-minus-circle", alt:"Delete task" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
