@@ -33,7 +33,7 @@
         <td><%= task.title %></td>
         <td><%= Course.find(task.course_id).code %></td>
         <td><%= task.description %></td>
-        <td><%= if task.task_type == 0 then "Not Specified" elsif task.task_type == 1 then "Assignment" elsif task.task_type == 2 then "Exam"  elsif task.task_type == 3 then "Quiz" end %> </td>
+        <!-- <td><%= if task.task_type == 0 then "Not Specified" elsif task.task_type == 1 then "Assignment" elsif task.task_type == 2 then "Exam"  elsif task.task_type == 3 then "Quiz" end %> </td> -->
         <td><%= if task.is_priority then "Yes" else "No" end %></td>
         <td><i class="fa fa fa-calendar" aria-hidden="true"></i>    <%= task.due_date.to_time.strftime('%B %e at %l:%M %p') %></td>
         <td><i class="fa fa fa-clock-o" aria-hidden="true"></i>    <%= time_left_builder(task.due_date, task.is_completed) %></td>
