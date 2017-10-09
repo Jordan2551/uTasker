@@ -22,7 +22,6 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
-    @task.task_type = 1
     # @task.task_type = params[:task_type]
     @task.title = build_title(params[:task_type], params[:task][:course_id])
 
