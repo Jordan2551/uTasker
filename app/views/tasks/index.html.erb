@@ -29,7 +29,7 @@
     </thead>
     <tbody>
       <% @tasks.each do |task| %>
-        <tr class="<%= task_row_colorizer(task.is_completed, task.is_priority, task.due_date)%>">
+        <!-- <tr class="<%= task_row_colorizer(task.is_completed, task.is_priority, task.due_date)%>"> -->
         <!-- <td><%= task.title %></td>
         <td><%= Course.find(task.course_id).code %></td>
         <td><%= task.description %></td>
