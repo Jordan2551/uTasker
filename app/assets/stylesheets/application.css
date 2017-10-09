@@ -1,0 +1,292 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require datetime_picker
+ */
+
+.form-row-margin{
+  margin-bottom:15px;
+}
+
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css");
+
+html, body {
+    height: 100%;
+    position:relative;
+}
+body {
+    padding-top: 75px;
+    margin-bottom: 95px;
+}
+
+
+a{color:white;}
+
+.animate {
+  -webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.navbar {
+  height: calc(100%);
+	max-height: 300px;
+	-webkit-transform: translate(0px, calc(-100% + 69px));
+	transform: translate(0px, calc(-100% + 69px));
+}
+
+.navbar li{
+  font-size:18px;
+  font-family: fira sans;
+}
+.navbar .container:not(.navbar-more) {
+    padding: 0px;
+}
+.navbar-more-overlay {
+	background-color: rgba(102, 102, 102, 0.55);
+	display: none;
+	height: 100%;
+	left: 0px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 1029;
+}
+.navbar-more-show > .navbar-more-overlay {
+	display: block;
+}
+.navbar-more-show > .navbar {
+	-webkit-transform: translate(0px, 0px);
+	transform: translate(0px, 0px);
+}
+.navbar-nav.mobile-bar {
+	list-style: none;
+	-ms-box-orient: horizontal;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-around;
+	justify-content: space-around;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-align-items: stretch;
+	align-items: stretch;
+	margin: 0px 0px;
+}
+.navbar-nav.mobile-bar > li {
+	-webkit-flex-grow: 1;
+	flex-grow: 1;
+	text-align: center;
+}
+.navbar-nav.mobile-bar > li > a > span.menu-icon {
+	display: block;
+	font-size: 1.8em;
+}
+.navbar-more {
+	background-color: rgb(255, 255, 255);
+	height: calc(100% - 69px);
+	overflow: auto;
+}
+.navbar-more .navbar-form {
+}
+.navbar-more .navbar-nav > li > a {
+    color: rgb(64, 64, 64);
+}
+.navbar-more > .navbar-nav > li > a > span.menu-icon {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+	.navbar {
+    height: auto;
+		-webkit-transform: translate(0px, 0px);
+		transform: translate(0px, 0px);
+	}
+	.navbar-nav.mobile-bar {
+		display: block;
+		max-height: 64px;
+		margin: 0px -15px;
+	}
+	.navbar-nav.mobile-bar > li > a > span.menu-icon {
+		display: none;
+	}
+}
+.buying-selling.active {
+    background: #7BB712;
+}
+
+.buying-selling {
+    width: 150px;
+    padding: 10px;
+    position: relative;
+}
+
+.buying-selling-word {
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 30px;
+}
+
+.radio-dot:before, .radio-dot:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: #fff;
+    border-radius: 100%;
+}
+
+.radio-dot:before {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    top: 10px;
+    left: 16px;
+}
+
+.radio-dot:after {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    top: 14px;
+    left: 20px;
+}
+
+.buying-selling.active .buying-selling-word {
+    color: #fff;
+}
+
+.buying-selling.active .radio-dot:after {
+    background: #426C2A;
+}
+
+.buying-selling.active .radio-dot:before {
+    background: #fff;
+    border-color: #699D17;
+}
+
+.buying-selling:hover .radio-dot:before {
+    border-color: #adadad;
+}
+
+.buying-selling.active:hover .radio-dot:before {
+    border-color: #699D17;
+}
+
+
+.buying-selling.active .radio-dot:after {
+    background: #426C2A;
+}
+
+.buying-selling:hover .radio-dot:after {
+    background: #e6e6e6;
+}
+
+.buying-selling.active:hover .radio-dot:after {
+    background: #426C2A;
+
+}
+
+@media (max-width: 400px) {
+
+    .mobile-br {
+        display: none;
+    }
+
+    .buying-selling {
+        width: 49%;
+        padding: 10px;
+        position: relative;
+    }
+
+}
+
+.introduction-bg-img {
+  background: url("/assets/bgimg.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-top:-45px;
+  height:100%;
+}
+
+.header {
+  margin-top:7%;
+  color:#fff;
+}
+
+.header h1 {
+   color:#fff;
+   font-size:40px;
+   font-family:fira sans;
+}
+
+.header p {
+   color:#fff;
+   font-size:22px;
+}
+
+.header-btn{
+  color:white;
+  background-color:#76d275;
+  margin-top:30px;
+}
+
+.footer p{
+  color:white;
+  font-size:18px;
+  margin-top:15px;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 95px;
+  background-color: #111;
+  text-align: center;
+}
+
+.container-footer{
+  margin-top: 50px;
+  color: #fff;
+  width: 100%;
+}
+
+.fa-twitter {
+    color: #4099FF;
+}
+
+.fa-facebook {
+    color: #3B5998;
+}
+
+.fa-linkedin {
+    color: #007bb6;
+}
+
+.fa {
+    opacity: 0.7;
+    transition: 1s;
+    -webkit-transition: 1s;
+}
+
+.fa:hover{
+    opacity: 1;
+    transition: 1s;
+    -webkit-transition: 1s;
