@@ -11,12 +11,24 @@
     </div>
   <% end %>
 
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.label :code %>
-  <%= form.text_field :code %>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row form-row-margin">
+    <div class="col-sm-6 col-sm-offset-3">
+        <%= form.label :name, "Name of course (ex: Integral Calculus)" %>
+        <%= form.text_field :name %>
+    </div>
   </div>
-<% end %>
+  <div class="row form-row-margin">
+    <div class="col-sm-6 col-sm-offset-3">
+      <%= form.label :code, "Course code (ex: MATH1310)", class:"form-row-margin", style:"color:red" %>
+      <%= form.text_field :code %>
+    </div>
+  </div>
+  <div class="row form-row-margin">
+    <div class="col-sm-6 col-sm-offset-3">
+      <%= form.submit %>
+    </div>
+  </div>
+
+
+
+  <% end %>

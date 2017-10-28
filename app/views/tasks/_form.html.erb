@@ -40,6 +40,7 @@
   <div class="row form-row-margin">
     <div class="col-sm-6 col-sm-offset-3">
       <%= form.label :course_id, 'Select Your Course' %>
+      <p>Can't find your course? <a href="<%= new_course_path %>" style="color:#76d275">Add it here</a></p>
       <select name="task[course_id]" class="form-control" selected="<%= task.course_id %>">
         <% Course.order(:name).each do |course| %>
           <option value="<%= course.id %>"><%= course.code %></option>
