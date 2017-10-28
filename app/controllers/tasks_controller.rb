@@ -15,6 +15,9 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    if !confirm_same_user(@task.user_id) then
+      redirect_to tasks_path
+    end
   end
 
   # POST /tasks
@@ -53,7 +56,7 @@ class TasksController < ApplicationController
       @task.due_date = DateTime.now
     end
     respond_to do |format|
-      if @task.update(task_params)
+      if(confirm_same_user(@task.user_id) && @task.update(task_params))
         format.html { redirect_to tasks_path, notice: 'Task was successfully updated.' }
       else
         format.html { render :edit }
@@ -64,10 +67,11 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
+    if(confirm_same_user(@task.user_id) && @task.destroy)
+      respond_to do |format|
+        format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -90,6 +94,10 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def confirm_same_user(compare_id)
+      current_user.id == compare_id
     end
 
     # Convinently builds the title for the task using the type of task and the course's code
